@@ -28,10 +28,11 @@ function countFileContent(data: string, options: Options, filePath?: string) {
     } else {
       console.log(output);
     }
-} catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
     console.error(`Error reading file: ${errorMessage}`);
-}
+  }
 }
 
 function convertFileToData(filePath: string): string {
