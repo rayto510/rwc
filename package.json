@@ -4,8 +4,5 @@
   "type": "module",
   "bin": {
     "rwc": "./index.js"
-  },
-  "dependencies": {
-    "commander": "^11.1.0"
   }
 }
