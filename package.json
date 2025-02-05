@@ -1,0 +1,11 @@
+{
+  "name": "rwc",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "rwc": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
+}
