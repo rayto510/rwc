@@ -1,13 +1,21 @@
 {
   "name": "rwc",
   "version": "1.0.0",
+  "license": "MIT",
   "type": "module",
   "bin": {
-    "rwc": "./index.js"
+    "rwc": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@types/node": "^22.13.1",
     "eslint": "^9.19.0",
-    "globals": "^15.14.0"
+    "globals": "^15.14.0",
+    "typescript": "^5.7.3"
   }
 }

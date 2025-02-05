@@ -3,7 +3,14 @@
 import process from "node:process";
 import fs from "fs";
 
-function countFileContent(data, options, filePath) {
+// Define types for function arguments
+interface Options {
+  l: boolean;
+  w: boolean;
+  c: boolean;
+}
+
+function countFileContent(data: string, options: Options, filePath?: string) {
   try {
     const lines = data.split("\n").length - 1;
     const words = data.split(/\s+/).filter((word) => word.length > 0).length;
@@ -21,18 +28,19 @@ function countFileContent(data, options, filePath) {
     } else {
       console.log(output);
     }
-  } catch (error) {
-    console.error(`Error reading file: ${error.message}`);
-  }
+} catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    console.error(`Error reading file: ${errorMessage}`);
+}
 }
 
-function convertFileToData(filePath) {
+function convertFileToData(filePath: string): string {
   return fs.readFileSync(filePath, "utf8");
 }
 
-function parseArgs(args) {
-  const options = { l: false, w: false, c: false };
-  const files = [];
+function parseArgs(args: string[]): { options: Options; files: string[] } {
+  const options: Options = { l: false, w: false, c: false };
+  const files: string[] = [];
 
   args.forEach((arg) => {
     if (arg.startsWith("-")) {
@@ -47,7 +55,7 @@ function parseArgs(args) {
   return { options, files };
 }
 
-function readStdIn(callback) {
+function readStdIn(callback: (data: string) => void): void {
   let data = "";
   process.stdin.on("readable", () => {
     let chunk;
